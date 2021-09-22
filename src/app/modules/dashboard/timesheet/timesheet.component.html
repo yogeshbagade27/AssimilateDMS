@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="form">
+      <div class="note">
+        <p>Timesheet</p>
+      </div>
+  
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Project</th>
+            <th scope="col">Task</th>
+            <th scope="col" *ngFor="let day of days">
+              {{ day | date: " dd/MM/yyyy" }}
+            </th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              <select >
+                <option>Select a Task</option>
+                <option  *ngFor="let project of projectData">
+                  {{ project.projectName }}
+                </option>
+              </select>
+              
+
+            </th>
+            <th>
+             
+              <select >
+                <option>Select a Task</option>
+                <option  *ngFor="let task of taskData">
+                  {{ task.taskType }}
+                </option>
+              </select>
+            </th>
+  
+            <td *ngFor="let day of days"><input type="text" class="text"/></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-primary float-right mr-4 mt-4">Submit</a>
+      <a
+      routerLink='/dashboard/leave'
+        class="btn btn-primary float-right mr-4 mt-4"
+        >Add Leave</a
+      >
+      <a  class="btn btn-primary float-right mr-4 mt-4"  routerLink='/dashboard/task'
+        >Add Task</a>
+    </div>
+  </div>
