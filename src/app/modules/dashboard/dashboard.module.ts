@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { TaskComponent } from './task/task.component';
 import { LeaveComponent } from './leave/leave.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { LeaveComponent } from './leave/leave.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

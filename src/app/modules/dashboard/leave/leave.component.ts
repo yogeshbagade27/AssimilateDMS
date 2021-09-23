@@ -9,6 +9,7 @@ import { LeaveService } from 'src/app/shared/leave.service';
 export class LeaveComponent implements OnInit {
 
   leaveData : any;
+  
 
   constructor( private leave : LeaveService) { }
 

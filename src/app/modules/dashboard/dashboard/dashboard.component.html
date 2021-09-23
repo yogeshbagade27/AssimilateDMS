@@ -1,13 +1,67 @@
-<p>dashboard works!</p>
-<div>
-    <!-- <app-header></app-header> -->
-</div>
-<div>
-    <button class=" btn btn-primary" routerLink='/dashboard/timesheet'>Timesheet</button>
-    <button class=" btn btn-primary">Task</button>
-    <button class=" btn btn-primary">Leave</button>
+
+
+
+    <!-- <button class=" btn btn-primary" (click)="displayPrevWeek()">Prevoius Week</button>
+    <td scope="col" *ngFor="let day of daysData">
+        {{ day | date: " dd/MM/yyyy" }} 
+      </td>
+
+      <button class=" btn btn-primary" (click)="displayCurrentWeek()">display Current Week</button>
+    <td scope="col" *ngFor="let day of daysData">
+        {{ day | date: " dd/MM/yyyy" }} 
+      </td>
+
+      <button class=" btn btn-primary" (click)="displayNextWeek()">display Next Week</button>
+    <td scope="col" *ngFor="let day of daysData">
+        {{ day | date: " dd/MM/yyyy" }} 
+      </td> -->
+    <!-- <button class=" btn btn-primary" routerLink='/dashboard/timesheet'>Timesheet</button> -->
+
+    <div class="header">
+      <div class="logo">
+          <i class="fa fa-tachometer"></i>
+          <span>Brand</span>
+      </div>
+      <a href="#" class="nav-trigger"><span></span></a>
+  </div>
+  <div class="side-nav">
+      <div class="logo">
+          <i class="fa fa-tachometer"></i>
+          <img src="../../../../assets/logo.svg" height="28" alt="CoolBrand">
+      </div>
+      <nav>
+          <ul>
+              <li>
+                     <!-- <button class=" btn btn-primary" routerLink='/dashboard/timesheet'>Timesheet</button>  -->
+                     <a routerLink='/dashboard/timesheet'>
+                      <span><i class="fa fa-envelope"></i></span>
+                      <span>Timesheet</span>
+                    </a>
+              </li>
+              <!-- <li>
+                  <a href="#">
+                      <span><i class="fa fa-envelope"></i></span>
+                      <span>Messages</span>
+                  </a>
+              </li>
+              <li class="active">
+                  <a href="#">
+                      <span><i class="fa fa-bar-chart"></i></span>
+                      <span>Analytics</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      <span><i class="fa fa-credit-card-alt"></i></span>
+                      <span>Payments</span>
+                  </a>
+              </li> -->
+          </ul>
+      </nav>
+  </div>
+  <div class="main-content">
+  </div>
+
     <router-outlet></router-outlet>
-</div>
-<div>
-    <!-- <app-footer></app-footer> -->
-</div>
+
+
