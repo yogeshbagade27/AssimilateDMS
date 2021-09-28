@@ -17,7 +17,7 @@
     <!-- <td scope="col" *ngFor="let day of daysData">
         {{ day | date: " dd/MM/yyyy" }} 
       </td> -->
-      <button class=" btn btn-primary ml-4 mb-4 " (click)="displayPrevWeek()">Prevoius Week</button>
+      <button class=" btn btn-info ml-4 mb-4 " (click)="displayPrevWeek()">Prevoius Week</button>
       <button class=" btn btn-primary ml-4 mb-4" (click)="displayNextWeek()">Next Week</button>
     <!-- <td scope="col" *ngFor="let day of daysData">
         {{ day | date: " dd/MM/yyyy" }} 
@@ -25,14 +25,15 @@
       </div>
   
       <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Project</th>
-            <th scope="col">Task</th>
+        <thead class="thead-dark">
+          <tr class="text-center">
+            <th scope="col" class="table-head">Project</th>
+            <th scope="col" class="table-head">Task</th>
             <th scope="col" *ngFor="let day of daysData">
-              {{ day | date: " dd/MM/yyyy" }}
+              {{day.weekName}}
+              {{ day.day | date: " dd/MM/yyyy" }}
             </th>
-            <th scope="col">Total</th>
+            <th scope="col" class="table-head">Total</th>
           </tr>
         </thead>
         <tbody>
