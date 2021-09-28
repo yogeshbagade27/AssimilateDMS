@@ -51,7 +51,14 @@ export class TimesheetComponent implements OnInit {
     var day = startOfWeek;
 
     while (day.isSameOrBefore(endOfWeek)) {
-       days.push(day.toDate());
+      console.log(day,"yyyyyyyyyyyyyy")
+      var weekDayName = moment(day.toDate()).format('dddd');
+      console.log(weekDayName);
+       days.push({
+         day:day.toDate(),weekName:weekDayName
+        }
+
+       );
         day = day.add(1, 'days');
     }
 

@@ -1,83 +1,89 @@
-
-
 <!-- <app-p1-looplab></app-p1-looplab> -->
-<div class="container register-form">
-    <div class="form"> 
-        
-<button type="button" class="btn btn-primary btn-lg float-right mr-4 mt-4" data-toggle="modal" data-target="#ModalLoginForm">
-    Add Task
-</button>
-<div class="form-content">
-<!-- Modal HTML Markup -->
-<div id="ModalLoginForm" class="modal fade">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title">Task Details</h1>
+<div class="container mr-5 mt-5">
+  <div class="container register-form">
+    <div class="form">
+
+      
+      <div class="row justify-content-end">
+        <div class="col-2">
+          <button type="button" class="btn btn-success float-right mr-4 mt-4" data-toggle="modal"
+          data-target="#ModalLoginForm">
+          Add Task
+        </button>
         </div>
-        <div class="modal-body">
-            <form role="form" >
-                <input type="hidden" name="_token" value="">
-                <div class="form-group">
+      </div>
+      <div class="form-content">
+        <!-- Modal HTML Markup -->
+        <div id="ModalLoginForm" class="modal fade">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title">Task Details</h1>
+              </div>
+              <div class="modal-body">
+                <form role="form">
+                  <input type="hidden" name="_token" value="">
+                  <div class="form-group">
                     <label class="control-label">Task Type</label>
                     <div>
-                        <input type="text" class="form-control input-lg" name="email" value="">
+                      <input type="text" class="form-control input-lg" name="email" value="">
                     </div>
-                </div>
-                <!-- <div class="form-group">
+                  </div>
+                  <!-- <div class="form-group">
                     <label class="control-label">Leave Descriptions</label>
                     <div>
                         <input type="text" class="form-control input-lg" name="password">
                     </div>
                 </div> -->
-                
-                <div class="form-group">
+
+                  <div class="form-group">
                     <div>
-                        <button type="submit" class="btn btn-success float-right mr-4 mt-4" value="submit">Submit</button>
+                      <button type="submit" class="btn btn-success float-right mr-4 mt-4" value="submit">Submit</button>
 
-                        
+
                     </div>
-                </div>
-            </form>
-            
-            
-        </div>
-    </div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
-</div>
+                  </div>
+                </form>
 
-<div class="container">
-    <h2>List of Tasks</h2>
-    <div class="row">
-      <div class="col-12">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              
-              <th class="col-4" >Task Id</th>
-              <th class="col-8">Task Type</th>
-             
-              
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor = "let task of taskData">
-             
-              <td>{{task.id}}</td>
-              <td>{{task.taskType}}</td>
-            
-             
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-<!-- /.modal --
+
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+
+        <div class="container">
+          <h2>List of Tasks</h2>
+          <div class="row">
+            <div class="col -12">
+              <table class="table table-bordered text-center">
+                <thead class="thead-dark">
+                  <tr>
+
+                    <th class="col-4">Task Id</th>
+                    <th class="col-8">Task Type</th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let task of taskData">
+
+                    <td>{{task.id}}</td>
+                    <td>{{task.taskType}}</td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- /.modal --
 <!-- <app-p2-mizuxe-book-theme></app-p2-mizuxe-book-theme> -->
 
-</div>
-</div>
-<a  class="btn btn-primary float-right mr-4 mt-4"  routerLink='/dashboard/timesheet'>Submit</a>
+      </div>
+    </div>
+    <a class="btn btn-primary float-right mr-4 mt-4" routerLink='/dashboard/timesheet'>Submit</a>
+  </div>
 </div>
