@@ -1,82 +1,223 @@
+<div class="container ml-2 ">
+  <div class="form">
+    <div class="note text-center bt-6 mt-4">
+      <span class="text-green h4">Timesheet</span>
+    </div>
+    <div class="row">
+      <button
+        class="btn btn-primary ml-4 mb-4 mt-4"
+        (click)="displayPrevWeek()"
 
- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<div class="container">
-    <div class="form">
-      <div class="note">
-        <p>Timesheet</p>
-      </div>
-      <div class="row">
-       
-    <!-- <td scope="col" *ngFor="let day of daysData">
-        {{ day | date: " dd/MM/yyyy" }} 
-      </td> -->
-
-      
-    <!-- <td scope="col" *ngFor="let day of daysData">
-        {{ day | date: " dd/MM/yyyy" }} 
-      </td> -->
-      <button class=" btn btn-primary ml-4 mb-4 " (click)="displayPrevWeek()">Prevoius Week</button>
-      <button class=" btn btn-primary ml-4 mb-4" (click)="displayNextWeek()">Next Week</button>
-    <!-- <td scope="col" *ngFor="let day of daysData">
-        {{ day | date: " dd/MM/yyyy" }} 
-      </td> -->
-      </div>
-  
-      <table class="table">
+      >
+        Prevoius Week
+      </button>
+      <button
+        class="btn btn-primary ml-4 mb-4 mt-4"
+        (click)="displayNextWeek()"
+      >
+        Next Week
+      </button>
+    </div>
+    <div class="row bg-primary text-white ml-1  bt-2 ">
+      <span class="h5 "><br> TIME SHEET FOR WEEK STARTING {{weekStart | date : "MMM dd YYYY" }} To {{weekEnd | date : "MMM dd YYYY" }} <br> </span>
+    </div>
+    <br><br>
+    <form [formGroup]="timesheetForm">
+      <table class="table " >
         <thead>
           <tr>
             <th scope="col">Project</th>
             <th scope="col">Task</th>
-            <th scope="col" *ngFor="let day of daysData">
-              {{ day | date: " dd/MM/yyyy" }}
+            <th scope="col" *ngFor="let days of daysData">
+              {{ days | date: "dd/MM/yyyy" }}
             </th>
             <th scope="col">Total</th>
           </tr>
         </thead>
         <tbody>
+          <!-- [formGroup]="timesheetForm" (ngSubmit)="onTimesheetSubmit()" novalidate -->
+
           <tr>
-            <th>
-              <select >
-                <option>Select a Task</option>
-                <option  *ngFor="let project of projectData">
+            <td>
+              <div class="form-group">
+              <select name="project" formControlName="project">
+                <option  >Select a Project</option>
+                <option *ngFor="let project of projectData">
                   {{ project.projectName }}
                 </option>
               </select>
-              
-
-            </th>
-            <th>
-             
-              <select >
-                <option>Select a Task</option>
-                <option  *ngFor="let task of taskData">
+            </div>
+            <div >
+              <div
+                *ngIf="f.project.touched && f.project.invalid"
+                class=" text-danger"
+              >
+                <span  *ngIf="f.project.errors"
+                  >Select a project</span
+                >
+              </div>
+            </div>
+            </td>
+            <td>
+              <div class="form-group">
+              <select name="task" formControlName="task">
+                <option  >Select a Task</option>
+                <option *ngFor="let task of taskData">
                   {{ task.taskType }}
                 </option>
               </select>
-            </th>
+            </div>
+            <div >
+              <div
+                *ngIf="f.task.touched && f.task.invalid"
+                class="text-danger"
+              >
+                <span  *ngIf="f.task.errors"
+                  >Select a task</span
+                >
+              </div>
+            </div>
+            </td>
+            <td>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control input-text"
+                        id="monday"
+                        formControlName="monday"
+                      
+                      />
+                    </div>
+
+                    <div *ngIf="f.monday.touched && f.monday.errors" class="text-danger">
+                      <div *ngIf="f.monday.errors.required">Only integers are allowed</div>
+                      <div *ngIf="f.monday.errors.min || f.monday.errors.max">Range Between 0 to 16</div>
+                  </div>
+            </td>   
+            <td>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control input-text"
+                  id="tuesday"
+                  formControlName="tuesday"
+                  
+                />
+              </div>
+              <div *ngIf="f.tuesday.touched && f.tuesday.errors" class="text-danger">
+                <div *ngIf="f.tuesday.errors.required">Only integers are allowed</div>
+                <div *ngIf="f.tuesday.errors.min || f.tuesday.errors.max">Range Between 0 to 16</div>
+            </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control input-text"
+                  id="wednesday"
+                  formControlName="wednesday"
+                />
+              </div>
+              <div *ngIf="f.wednesday.touched && f.wednesday.errors" class="text-danger">
+                <div *ngIf="f.wednesday.errors.required">Only integers are allowed</div>
+                <div *ngIf="f.wednesday.errors.min || f.wednesday.errors.max">Range Between 0 to 16</div>
+            </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control input-text"
+                  id="thursday"
+                  formControlName="thursday"
+                />
+                <!-- <div *ngIf="getControl.name.touched && getControl.name.invalid" class="text-danger">
+                <div *ngIf="getControl.name.errors.required">Name is required.</div>
               
-            <td><input type="text" name="monday" class="input-text"  [(ngModel)]="model.monday"  required ></td>
-         
-            <td><input type="text" name="tuesday"class="input-text"/></td>
-            <td><input type="text" name="wednesday" class="input-text"/></td>
-            <td><input type="text" name="thursday" class="input-text"/></td>
-            <td><input type="text" name="friday" class="input-text"/></td>
-            <td><input type="text" name="saturday" class="input-text"/></td>
-            <td><input type="text" name="sunday" class="input-text"/></td>
-           
-            
+              </div> -->
+              </div>
+              <div *ngIf="f.thursday.touched && f.thursday.errors" class="text-danger">
+                <div *ngIf="f.thursday.errors.required">Only integers are allowed</div>
+                <div *ngIf="f.thursday.errors.min || f.thursday.errors.max">Range Between 0 to 16</div>
+            </div>
+            </td>
+
+            <td>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control input-text"
+                  id="friday"
+                  formControlName="friday"
+                />
+              </div>
+              <div *ngIf="f.friday.touched && f.friday.errors" class="text-danger">
+                <div *ngIf="f.friday.errors.required">Only integers are allowed</div>
+                <div *ngIf="f.friday.errors.min || f.friday.errors.max">Range Between 0 to 16</div>
+            </div>
+            </td>
+
+            <td>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control input-text"
+                  id="saturday"
+                  formControlName="saturday"
+                />
+              </div>
+              <div *ngIf="f.saturday.touched && f.saturday.errors" class="text-danger">
+                <div *ngIf="f.saturday.errors.required">Only integers are allowed</div>
+                <div *ngIf="f.saturday.errors.min || f.saturday.errors.max">Range Between 0 to 16</div>
+            </div>
+            </td>
+
+            <td>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control input-text"
+                  id="sunday"
+                  formControlName="sunday"
+                />
+              </div>
+              <div *ngIf="f.sunday.touched && f.sunday.errors" class="text-danger">
+                <div *ngIf="f.sunday.errors.required">Only integers are allowed</div>
+                <div *ngIf="f.sunday.errors.min || f.sunday.errors.max">Range Between 0 to 16</div>
+            </div>
+            </td>
+            <td>
+                 Hello
+            </td>
           </tr>
+          <br />
         </tbody>
       </table>
-      <a class="btn btn-primary float-right mr-4 mt-4">Submit</a>
+      <button
+      class="btn btn-primary float-right mr-4 mt-4 text-white"
+      (click)="onReset()"
+     
+    >
+     Cancel
+    </button>
+      <button
+        class="btn btn-primary float-right mr-4 mt-4 text-white"
+        (click)="onSubmitTimesheetForm()"
+       
+      >
+        Submit
+      </button>
       <a
-      routerLink='/dashboard/leave'
+        routerLink="/dashboard/leave"
         class="btn btn-primary float-right mr-4 mt-4"
         >Add Leave</a
       >
-      <a  class="btn btn-primary float-right mr-4 mt-4"  routerLink='/dashboard/task'
-        >Add Task</a>
-    </div>
+      <a
+        class="btn btn-primary float-right mr-4 mt-4"
+        routerLink="/dashboard/task"
+        >Add Task</a
+      >
+    </form>
+    <!-- <a class="btn btn-primary float-right mr-4 mt-4">Submit</a> -->
   </div>
+</div>
