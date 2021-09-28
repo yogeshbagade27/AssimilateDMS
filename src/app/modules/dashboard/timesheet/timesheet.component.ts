@@ -46,7 +46,7 @@ export class TimesheetComponent implements OnInit {
     // Find start and end of week
     var startOfWeek= this.timeTracker.clone().startOf('isoWeek');
     var endOfWeek = this.timeTracker.clone().endOf('isoWeek');
-
+    
      days = [];
     var day = startOfWeek;
 
@@ -64,6 +64,7 @@ export class TimesheetComponent implements OnInit {
 } 
 displayCurrentWeek() {      
   this.daysData = this.getDays(0);
+  console.log(this.daysData);
 } 
  displayNextWeek() {    
   this.daysData = this.getDays(1);
