@@ -27,10 +27,17 @@
   <div class="side-nav">
       <div class="logo">
           <i class="fa fa-tachometer"></i>
-          <img src="../../../../assets/logo.svg" height="28" alt="CoolBrand">
+          <img src="/assets/logo.svg" height="28" alt="CoolBrand">
       </div>
       <nav>
           <ul>
+            <li>
+              <!-- <button class=" btn btn-primary" routerLink='/dashboard/timesheet'>Timesheet</button>  -->
+              <a routerLink='/dashboard'>
+               <span><i class="fa fa-envelope"></i></span>
+               <span>Dashboard</span>
+             </a>
+       </li>
               <li>
                      <!-- <button class=" btn btn-primary" routerLink='/dashboard/timesheet'>Timesheet</button>  -->
                      <a routerLink='/dashboard/timesheet'>
@@ -60,8 +67,9 @@
       </nav>
   </div>
   <div class="main-content">
+    <router-outlet></router-outlet>
   </div>
 
-    <router-outlet></router-outlet>
+   
 
 
